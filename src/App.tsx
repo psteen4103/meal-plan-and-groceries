@@ -16,7 +16,7 @@ function App() {
             onSwitchHousehold={clearActiveHousehold}
             syncMode={hasSupabaseConfig ? 'Supabase configured' : 'Local household mode'}
           >
-            <AppRoutes />
+            <AppRoutes householdId={activeHousehold.id} />
           </AppShell>
         </BrowserRouter>
       )}
