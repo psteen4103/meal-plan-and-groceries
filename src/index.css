@@ -1,0 +1,101 @@
+:root {
+  --bg: #f4efe4;
+  --bg-deep: #dfe9da;
+  --surface: rgba(255, 252, 245, 0.86);
+  --border: rgba(31, 92, 74, 0.14);
+  --text: #315145;
+  --text-strong: #19382d;
+  --muted: #5f7b70;
+  --accent-strong: #1f5c4a;
+  --accent-soft: rgba(31, 92, 74, 0.12);
+  --warm: #d1792e;
+  font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(209, 121, 46, 0.18), transparent 32%),
+    radial-gradient(circle at top right, rgba(31, 92, 74, 0.16), transparent 28%),
+    linear-gradient(180deg, var(--bg), var(--bg-deep));
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(25, 56, 45, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(25, 56, 45, 0.02) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+#root {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 1.25rem 0 2rem;
+}
+
+a,
+button,
+input {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--text-strong);
+  line-height: 1.05;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4.8rem);
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  margin-bottom: 0.75rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.65rem;
+}
+
+p,
+li,
+dd,
+dt {
+  font-size: 1rem;
+}
+
+strong {
+  color: var(--text-strong);
+}
