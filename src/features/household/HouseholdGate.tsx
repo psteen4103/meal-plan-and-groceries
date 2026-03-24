@@ -1,5 +1,4 @@
-import type { ReactNode } from 'react'
-import { useState, useSyncExternalStore } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 import {
   createHousehold,
   joinHousehold,
@@ -13,14 +12,20 @@ type HouseholdGateProps = {
 }
 
 export function HouseholdGate({ children }: HouseholdGateProps) {
-  const activeHousehold = useSyncExternalStore(
-    subscribeToHousehold,
-    readActiveHousehold,
+  const [activeHousehold, setActiveHousehold] = useState<ActiveHousehold | null>(
     readActiveHousehold,
   )
   const [householdName, setHouseholdName] = useState('')
   const [shareCode, setShareCode] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
+
+  useEffect(() => {
+    const unsubscribe = subscribeToHousehold(() => {
+      setActiveHousehold(readActiveHousehold())
+    })
+
+    return unsubscribe
+  }, [])
 
   if (activeHousehold) {
     return <>{children(activeHousehold)}</>

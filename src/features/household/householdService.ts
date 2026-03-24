@@ -82,11 +82,9 @@ export function readActiveHousehold() {
 export function subscribeToHousehold(callback: () => void) {
   const handler = () => callback()
   window.addEventListener(HOUSEHOLD_EVENT, handler)
-  window.addEventListener('storage', handler)
 
   return () => {
     window.removeEventListener(HOUSEHOLD_EVENT, handler)
-    window.removeEventListener('storage', handler)
   }
 }
 
